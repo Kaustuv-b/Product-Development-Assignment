@@ -1,0 +1,83 @@
+{% load static %}
+
+<div class="bg-indigo-900 text-black text-white">
+  <div class="max-w-[1400px] mx-auto flex items-center w-full justify-between py-6 px-4">
+    <div>
+      <a href="{% url 'home' %}">
+        <!-- <img src="/Static/images/logo.png" alt="Logo"> -->
+        <img src="{% static 'images/2024.png' %}" alt="Logo" class="h-20">
+      </a>
+    </div>
+
+    <nav class="hidden lg:flex lg:items-center lg:gap-x-6 xl:gap-x-12">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'live' %}">Live Match</a>
+      <a href="{% url 'video-list' %}">Highlights</a>
+      <a href="{% url 'schedule' %}">Schedule</a>
+      <a href="{% url 'medal' %}">Medals</a>
+      <a href="{% url 'about' %}">About</a>
+    </nav>
+
+    <div class="lg:hidden">
+      <button class="text-xl border px-3 py-1.5 rounded-lg mobile-nav-trigger w-[46px]">
+        <i class="fa-solid fa-bars-staggered menu-trigger-icon"></i>
+      </button>
+      <nav
+        class="mobile-nav-menu flex flex-col bg-white w-full p-6 absolute text-black gap-6 shadow-lg rounded-lg hidden left-0">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="#">Live Match</a>
+        <a href="{% url 'video-list' %}">Highlighted Broadcast</a>
+        <a href="#">Schedule</a>
+        <a href="#">About</a>
+        {% if request.user.is_authenticated %}
+        <!-- <a href="{% url 'user-profile' %}"><button type="button">{{user.username}}</button></a></a> -->
+        <a href="{% url 'user-profile' %}"
+          class="px-4 py-1.5 border rounded-lg text-black flex items-center gap-x-2 w-fit"><i
+            class="fa-solid fa-user"></i>{{user.username}}</a></a>
+
+        <a href="{% url 'logout' %}"><button type="button"
+            class="px-4 py-2 bg-black rounded-lg text-white flex items-center gap-x-2 hover:opacity-50"><i
+              class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button></a></a>
+        {% else %}
+        <a href="{% url 'register' %}"><button type="button">SignUp</button></a>
+        <a href="{% url 'login' %}"><button type="button">Login</button></a>
+        {% endif %}
+      </nav>
+    </div>
+
+    <div class="hidden lg:flex lg:items-center lg:gap-x-4">
+      {% if request.user.is_authenticated %}
+      <!-- <a href="{% url 'user-profile' %}"><button type="button">{{user.username}}</button></a></a> -->
+      <a href="{% url 'user-profile' %}"
+        class="px-4 py-1.5 border rounded-lg text-white flex items-center gap-x-2 w-fit"><i
+          class="fa-solid fa-user"></i>{{user.username}}</a></a>
+
+      <a href="{% url 'logout' %}"><button type="button"
+          class="px-4 py-2 bg-black rounded-lg text-white flex items-center gap-x-2 hover:opacity-80"><i
+            class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button></a></a>
+      {% else %}
+      <a href="{% url 'register' %}"><button type="button"  class="px-4 py-1.5 border rounded-lg text-white flex items-center gap-x-2 w-fit">SignUp</button></a>
+      <a href="{% url 'login' %}"><button type="button"
+        class="px-4 py-2 bg-black rounded-lg text-white inline-flex items-center gap-x-2 hover:opacity-80"><i
+          class="fa-solid fa-right-from-bracket"></i><span>Login</span></button>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+</div>
+
+<script>
+  const mobileNavTrigger = document.querySelector(".mobile-nav-trigger");
+  const mobileNavMenu = document.querySelector(".mobile-nav-menu");
+  const menuIcon = document.querySelector(".menu-trigger-icon");
+
+  mobileNavTrigger.addEventListener("click", () => {
+    mobileNavMenu.classList.toggle("hidden");
+    menuIcon.classList.toggle("fa-xmark");
+  });
+</script>

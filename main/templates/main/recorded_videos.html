@@ -1,0 +1,85 @@
+{% extends 'main.html' %} {% block content %}
+<style>
+  .video-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .video-container {
+    width: calc(100% - 20px); /* Adjusted width for each video card */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) {
+    .video-container {
+      flex-direction: row;
+    }
+  }
+
+  .video-container:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .video-details {
+    flex: 1;
+    padding: 20px;
+  }
+  .video-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .video-detail {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+  }
+  .video-description {
+    padding: 20px;
+  }
+  iframe {
+    border: none;
+    width: calc(40% - 20px); /* Adjusted width for the video iframe */
+    height: 300px; /* Increased height for better visibility */
+  }
+  hr {
+    border: none;
+    border-top: 1px solid #eee;
+  }
+</style>
+
+<div
+  class="videos-container max-w-[1400px] mx-auto px-3 py-8 md:py-16 flex flex-col gap-y-8 md:gap-y-16"
+>
+  {% for video in video %}
+  <a href="{% url 'watch-video' video.id %}" class="video-link">
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube.com/embed/{{ video.embed.embed_code }}?controls=0&autoplay=1$mute=1? "
+        frameborder="0"
+        allowfullscreen
+        class="w-full md:w-[30%]"
+      ></iframe>
+      <div class="video-details">
+        <p class="video-title">{{ video.title }}</p>
+        <p class="video-detail">
+          <strong>Detail: <br /> </strong> {{ video.detail }}
+        </p>
+        <p class="video-detail">
+          <strong>Uploaded:</strong> {{ video.created|timesince }}
+        </p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock content %}

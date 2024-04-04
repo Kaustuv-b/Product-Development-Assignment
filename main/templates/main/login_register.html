@@ -1,0 +1,128 @@
+{% extends 'main.html' %} {% block content %}
+
+<style>
+  .common-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  .common-form input:focus {
+    outline: 1px auto;
+  }
+</style>
+
+<div class="flex justify-center pt-8 px-4">
+  {% if page == 'login' %}
+  <!-- Login Form -->
+  <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Login</h1>
+    <form method="POST" action="" class="common-form">
+      {% csrf_token %}
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700">Username</label>
+        <input
+          type="text"
+          id="username"
+          class="form-input w-full mt-1"
+          placeholder="Enter username"
+          name="username"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-input w-full mt-1"
+          placeholder="Enter Password"
+          name="password"
+        />
+      </div>
+      <ul class="messages mb-4">
+        {% for message in messages %}
+        <p class="text-red-700">{{ message }}</p>
+        {% endfor %}
+      </ul>
+      <div class="flex justify-between items-center mb-4">
+        <a
+          href="{% url 'password_reset' %}"
+          class="text-sm text-blue-700 hover:underline"
+          >Forgot Password?</a
+        >
+        <button
+          type="submit"
+          class="bg-blue-900 text-white py-2 px-4 rounded hover:bg-blue-800 focus:outline-none focus:bg-blue-800"
+          name="login"
+          value="login"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+    <hr class="my-4" />
+    <div class="text-center">
+      <span class="text-sm">Don't have an account?</span>
+      <a
+        href="{% url 'register' %}"
+        class="text-sm text-blue-700 hover:underline font-semibold underline"
+        >Register</a
+      >
+    </div>
+  </div>
+  <!-- End Login Form -->
+  {% else %}
+  <!-- Register Form -->
+  <div class="max-w-[1024px] w-full bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Create An Account</h1>
+    <form method="post" action="{% url 'register' %}" class="common-form">
+      {% csrf_token %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10 mb-4">
+        {% for field in form %}
+        <div>
+          <label for="{{ field.id_for_label }}" class="block text-gray-700"
+            >{{ field.label }}</label
+          >
+          {{ field }}
+        </div>
+        {% endfor %}
+      </div>
+      <ul class="messages py-2">
+        {% for message in messages %}
+        <p class="text-red-700">{{ message }}</p>
+        {% endfor %}
+      </ul>
+      <div class="py-4">
+        <button
+          type="submit"
+          class="bg-blue-900 text-white py-2 px-4 rounded hover:bg-blue-800 focus:outline-none focus:bg-blue-800 w-full"
+        >
+          Register
+        </button>
+        <a
+        href="{% url 'login' %}"
+        class="text-sm text-blue-700 hover:underline font-semibold underline"
+        >By clicking Create Account, you agree to our Terms and Privacy Policy</a
+      >
+      </div>
+    </form>
+    <hr class="my-4" />
+    <div class="text-center">
+      <span class="text-sm">Already have an account?</span>
+      <a href="{% url 'login' %}">
+      <p
+        class="text-sm text-blue-500 hover:underline font-semibold"
+        >Login
+        </p>
+      </a>
+    </div>
+  </div>
+  <!-- End Register Form -->
+  {% endif %}
+</div>
+
+{% endblock content %}

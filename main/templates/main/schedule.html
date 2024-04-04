@@ -1,0 +1,127 @@
+{% extends 'main.html' %} 
+{% block content %}
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style>
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Sport</th>
+      <th>Match</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Football</td>
+      <td>Brazil vs Argentina</td>
+      <td>April 1</td>
+      <td>3:30 AM</td>
+      <td>Final</td>
+    </tr>
+    <tr>
+      <td>Cricket</td>
+      <td>India vs Australia</td>
+      <td>April 1</td>
+      <td>5:45 PM</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Tennis</td>
+      <td>USA vs Spain</td>
+      <td>April 3</td>
+      <td>1:00 PM</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Basketball</td>
+      <td>USA vs China</td>
+      <td>April 4</td>
+      <td>12:00 AM</td>
+      <td>Final</td>
+    </tr>
+    <tr>
+      <td>Rugby</td>
+      <td>New Zealand vs England</td>
+      <td>April 8</td>
+      <td>3:00 PM</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Baseball</td>
+      <td>Japan vs South Korea</td>
+      <td>April 10</td>
+      <td>4:30 PM</td>
+      <td>Semifinal</td>
+    </tr>
+    <tr>
+      <td>Hockey</td>
+      <td>Canada vs Russia</td>
+      <td>April 15</td>
+      <td>2:00 PM</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Golf</td>
+      <td>USA vs Europe</td>
+      <td>April 18</td>
+      <td>9:00 AM</td>
+      <td>Final</td>
+    </tr>
+    <tr>
+        <td>Swimming</td>
+        <td>USA vs Australia</td>
+        <td>April 22</td>
+        <td>6:00 AM</td>
+        <td>Group</td>
+      </tr>
+      <tr>
+        <td>Volleyball</td>
+        <td>Brazil vs Italy</td>
+        <td>April 25</td>
+        <td>8:30 PM</td>
+        <td>Final</td>
+      </tr>
+      <tr>
+        <td>Cycling</td>
+        <td>France vs Spain</td>
+        <td>April 28</td>
+        <td>10:00 AM</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Boxing</td>
+        <td>UK vs USA</td>
+        <td>May 2</td>
+        <td>7:00 PM</td>
+        <td>Semifinal</td>
+      </tr>
+      
+  </tbody>
+</table>
+
+
+
+{% endblock content %}

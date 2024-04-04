@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    position: relative;
+  }
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+  .container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('{% static "images/payris.png" %}');
+    background-size: cover;
+    opacity: 0.3; /* Adjust the opacity as needed */
+    z-index: 0;
+  }
+  h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="container">
+  <div class="content">
+    <h1>About Payris</h1>
+    <p>The city of Payris, nestled in the picturesque landscapes, has been chosen to host the prestigious FunOlympic Games in 2024. This remarkable achievement marks a significant milestone in the city's history.</p>
+    
+    <p>Payris, known for its rich cultural heritage and warm hospitality, is honored to welcome athletes and spectators from around the globe to participate in this celebration of sportsmanship and camaraderie.</p>
+    
+    <p>With state-of-the-art facilities and a vibrant atmosphere, Payris is ready to showcase the spirit of unity and competition that defines the FunOlympic Games. From breathtaking opening ceremonies to thrilling sporting events, the city promises an unforgettable experience for all.</p>
+    
+    <p>Come join us in Payris as we embark on this incredible journey, embracing the values of friendship, excellence, and fair play. Together, let's make the 2024 FunOlympic Games a resounding success!</p>
+  </div>
+</div>
+{% endblock content %}

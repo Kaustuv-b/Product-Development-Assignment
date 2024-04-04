@@ -1,0 +1,62 @@
+{% extends 'main.html' %} {% block content %}
+
+<style>
+  .common-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  .common-form input:focus {
+    outline: 1px auto;
+  }
+</style>
+
+<section class="bg-gray-100 min-h-screen py-8 px-4">
+  <div class="mx-auto max-w-[1024px]">
+    <div class="flex justify-center">
+      <div class="w-full lg:w-10/12 xl:w-8/12">
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h2 class="text-2xl font-semibold">Update Profile</h2>
+          </div>
+          <div class="p-6 pt-0">
+            <form action="" method="POST" class="space-y-6 common-form">
+              {% csrf_token %} {% for field in form %}
+              <div>
+                <label
+                  for="{{ field.id_for_label }}"
+                  class="block text-sm font-medium text-gray-700 pb-2"
+                  >{{ field.label }}</label
+                >
+                {{ field }}
+              </div>
+              {% endfor %}
+
+              <ul class="messages">
+                {% for message in messages %}
+                <p class="text-red-700">{{ message }}</p>
+                {% endfor %}
+              </ul>
+
+              <div>
+                <button
+                  type="submit"
+                  class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-900 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
